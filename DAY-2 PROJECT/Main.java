@@ -37,9 +37,9 @@ public class Main {
         System.out.println("==============================================");
   
 
-        //service.getProduct("BlackBeast");
-        //service.getProductWithText("writing");
-        //service.searchByPlace("white");
+        service.getProduct("BlackBeast");
+        service.getProductWithText("writing");
+        service.searchByPlace("white");
         service.searchProductsOutOfWarranty();
 
     }
