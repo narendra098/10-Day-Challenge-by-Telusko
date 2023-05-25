@@ -13,10 +13,10 @@ public class Main {
         
         Class c = Class.forName("Apple"); // getting class name 
       
-        Apple apple = (Apple) c.newInstance(); //creating object
-        Method m = c.getDeclaredField("repair", int.class); //accessing private methods 
-        m.setAccessible(true); // setting accessibility for the private method 
-        m.invoke(apple, 50); // calling the private method
+    //    Apple apple = (Apple) c.newInstance(); //creating object
+    //    Method m = c.getDeclaredField("repair", int.class); //accessing private methods 
+    //    m.setAccessible(true); // setting accessibility for the private method 
+     //   m.invoke(apple, 50); // calling the private method
 
         
     }
