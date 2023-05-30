@@ -21,6 +21,6 @@ public interface ProductDB extends JpaRepository<Product, Integer> {
   @Query("SELECT p FROM Product p WHERE p.warranty < 2024")
   List<Product> findProductsByWarranty();
 
-mm
+
 }
 
