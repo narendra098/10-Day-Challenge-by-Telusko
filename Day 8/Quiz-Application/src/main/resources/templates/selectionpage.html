@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Question List</title>
+    <link rel="stylesheet" th:href="@{selectionpage.css}" />
+</head>
+<body>
+    <center style="font-weight:bold;font-size:50px; font-family:papyrus, Fantasy">Select your Tech Stack</center>
+    <div class="container">
+    <div class="nav">
+
+        <form th:action="@{/quiz/python}" method="get">
+            <button class="btn" id="python" type="submit"><h2>Python</h2></button>
+        </form>
+
+        <form th:action="@{/quiz/java}" method="get">
+            <button class="btn" id="java" type="submit"><h2>Java</h2></button>
+        </form>
+
+        <form th:action="@{/quiz/javascript}" method="get">
+            <button class="btn" id="javascript" type="submit"><h2>Javascript</h2></button>
+        </form>
+
+
+
+    </div>
+    </div>
+
+</body>
+</html>

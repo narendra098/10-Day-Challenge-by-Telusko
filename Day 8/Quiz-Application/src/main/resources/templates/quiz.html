@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Quiz</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <center><a class="navbar-brand" style="color: aliceblue;">QUIZ</a></center>
+
+
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+   
+  
+  
+</nav>
+<br>
+<br>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				
+				<div class = "card-body">
+					   <h1>Quiz Questions</h1>
+                       <form action="/submit" method="POST">
+                        <div th:each="question, questionIndex : ${questions}">
+                            <h3>
+                                <span th:text="'ID: ' + ${question.id}"></span>
+                                <span th:text="${question.questionText}"></span>
+                            </h3>
+                            <div th:each="option, optionIndex : ${question.options}">
+                                <input type="radio" th:name="'question' + ${questionIndex.index}" th:id="'option' + ${optionIndex.index}" th:value="${question.id + ':' + optionIndex.index}" />
+                                <label th:for="'option' + ${optionIndex.index}" th:text="${option}"></label>
+                            </div>
+                            <br/>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                            
+                       
+				
+					
+
+
+
+						
+				
+					<script>
+						document.getElementById("myForm").addEventListener("submit", function(event) {
+							var inputs = document.querySelectorAll("#myForm input[required]");
+							var isValid = true;
+							
+							for (var i = 0; i < inputs.length; i++) {
+								if (inputs[i].value.trim() === "") {
+									isValid = false;
+									break;
+								}
+							}
+							
+							if (!isValid) {
+								event.preventDefault(); // Prevent form submission
+								alert("Please fill in all fields.");
+							}
+						});
+					</script>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

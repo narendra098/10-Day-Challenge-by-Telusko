@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Question List</title>
+    <link rel="stylesheet" th:href="@{result.css}" />
+</head>
+<body>
+    <center style="font-weight:bold;font-size:50px; font-family:papyrus, Fantasy">RESULT</center>
+    <div class="container">
+    <div class="nav">
+    <div class="item">You Scored</div>
+    <div class="item" ><span style="color: rgb(240, 44, 9); font-weight: bold;" th:text=" ${score}"></span> out of <span style="color: rgb(243, 30, 14);" th:text="${total_questions}"></span></div>
+    </div>
+    </div>
+
+</body>
+</html>

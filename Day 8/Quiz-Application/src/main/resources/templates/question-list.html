@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" style="color: aliceblue;">ADMIN PANNEL</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a style="margin-top: 5px" th:href = "@{/addquestion}" class = "btn btn-primary btn-sm mb-1"> Add Question</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+	<div class ="container">
+		<div class = "row">
+			<h3 style="margin-left: 15px;"> Added Questions </h3>
+		</div>
+		
+		<table class = "table table-striped table-bordered">
+			<thead class = "table-dark">
+				<tr>
+					<th> Question</th>
+					<th> Options</th>
+					<th> Correct Option </th>
+					<th> Tech </th>
+                    <th>Action</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each = "question: ${questions}">
+
+					<td th:text = "${question.questionText}"></td>
+
+                    <td>
+                    <ol>
+                        <li th:each="option : ${question.options}" th:text="${option}"></li>
+                    </ol>
+                   </td>
+
+                    <td th:text = "${question.correctOption}"></td>
+
+                    <td th:text = "${question.tech}"></td>
+
+					<td>
+						<a th:href = "@{/editquestion/{id}(id=${question.id})}"
+						 class = "btn btn-primary">Update</a>
+						<br> </br>
+						<a th:href = "@{/deletequestion/{id}(id=${question.id})}"
+						 class = "btn btn-danger">Delete</a>
+						 
+					</td>
+
+				</tr>
+			</tbody>
+		
+		</table>
+		
+	</div>
+</body>
+</html>

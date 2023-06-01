@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" style="color: aliceblue;">ADMIN PANNEL</a>
+
+
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+   
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/getquestions}">Added Questions</a>
+      </li>
+    </ul>
+  </div>
+  
+</nav>
+<br>
+<br>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Add New Question </h1>
+				<div class = "card-body">
+					<form th:action="@{/updatequestion/{id}(id=${question.getId()})}" th:object = "${question}" method="POST">
+						<div class ="form-group">
+							<label> Question </label>
+							<input
+							type = "text"
+							name = "question"
+							th:field = "*{questionText}"
+							class = "form-control"
+							placeholder="Enter question" 
+							required
+							/>
+						</div>
+						<h6>Enter options:</h6>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+							  <input type="text" class="form-control" id="option1" th:field="*{options[0]}" placeholder="option 1" required>
+							</div>
+							<div class="form-group col-md-6">
+							  <input type="text" class="form-control" id="option2" th:field="*{options[1]}" placeholder="option 2" required>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+							  <input type="text" class="form-control" id="option3" th:field="*{options[2]}" placeholder="option 3" required>
+							</div>
+							<div class="form-group col-md-6">
+							  <input type="text" class="form-control" id="option4" th:field="*{options[3]}" placeholder="option 4" required>
+							</div>
+						</div>
+
+						<div class ="form-group">
+							<label> Answer </label>
+							<input type ="number"
+							name = "correctOption"
+							class = "form-control"
+							th:field="*{correctOption}"
+							placeholder="enter correct option" 
+							required
+							/>
+						</div>
+						
+
+
+
+						<div class ="form-group">
+							<label> Tech </label>
+							<input type = "text"
+							name = "tech"
+							class = "form-control"
+							th:field="*{tech}"
+							placeholder="tech" 
+							required
+							/>
+						</div>
+						
+						<div class = "box-footer">
+							<button type="submit" class = "btn btn-primary">
+								Submit
+							</button>
+						</div>
+					</form>
+
+					<script>
+						document.getElementById("myForm").addEventListener("submit", function(event) {
+							var inputs = document.querySelectorAll("#myForm input[required]");
+							var isValid = true;
+							
+							for (var i = 0; i < inputs.length; i++) {
+								if (inputs[i].value.trim() === "") {
+									isValid = false;
+									break;
+								}
+							}
+							
+							if (!isValid) {
+								event.preventDefault(); // Prevent form submission
+								alert("Please fill in all fields.");
+							}
+						});
+					</script>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
